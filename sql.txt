@@ -1,0 +1,1 @@
+insert into company_regist_info(name,source_url,registered_captial, oper_name,founded_date,company_type,status_of_operation,business_scope,registered_addrterm_start,term_end,register_authority,check_date,company_logo,reg_num,created_time,update_time) values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
