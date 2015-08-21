@@ -9,7 +9,7 @@ from datetime import datetime
 
 company_detail = "http://app.qichacha.com//enterprises/new/newGetData?province=s&user=&unique="
 
-conn = MySQLdb.connect(host="localhost", user="root", passwd="root123", db="haolaoban", charset="utf8")
+conn = MySQLdb.connect(host="192.168.0.3", user="root", passwd="root123", db="haolaoban", charset="utf8")
 cursor = conn.cursor()
 
 def insert_company_info(company_data):
