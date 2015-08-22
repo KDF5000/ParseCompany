@@ -9,7 +9,7 @@ from datetime import datetime
 
 company_detail = "http://app.qichacha.com//enterprises/new/newGetData?province=s&user=&unique="
 
-conn = MySQLdb.connect(host="192.168.0.3", user="root", passwd="root123", db="haolaoban", charset="utf8")
+conn = MySQLdb.connect(host="192.168.0.107", user="root", passwd="root123", db="haolaoban", charset="utf8")
 cursor = conn.cursor()
 
 def insert_company_info(company_data):
@@ -104,6 +104,8 @@ def parse_company(json_data):
         new_company_id = insert_company_info(company_data)
         if new_company_id is None:
             conn.rollback()
+            with open('error.txt', 'a') as ferr:
+                ferr.write(json_data)
             return None
         # 股东结构
         partners = company_data['Partners']
@@ -113,14 +115,20 @@ def parse_company(json_data):
                 cursor.close()
                 conn.rollback()
                 conn.close()
+                with open('error.txt', 'a') as ferr:
+                    ferr.write(json_data)
                 return None
         cursor.close()
         conn.commit()
         conn.close()
         print 'success!'
+        with open('success.txt', 'a') as fsu:
+            fsu.write(json_data)
         return True
 
     except Exception, e:
+        with open('error.txt', 'a') as ferr:
+            ferr.write(json_data)
         print 'parse error: '.decode('utf-8'), str(e)
 
 

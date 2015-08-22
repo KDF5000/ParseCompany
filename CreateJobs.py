@@ -9,7 +9,7 @@ from rq import Queue
 from ParseCompany import parse_company
 
 #连接redis
-redis_conn = Redis(host='192.168.0.3', port=6378)
+redis_conn = Redis(host='192.168.0.108', port=6379)
 q = Queue(connection=redis_conn, async=True)  # 设置async为False则入队后会自己执行 不用调用perform
 
 with open("jobs.json", 'r') as f:
