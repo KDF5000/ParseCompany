@@ -79,7 +79,7 @@ def insert_parter_info(company_id, partner_info):
 
     time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
-    sql = "insert into sotckholder(company_id,stock_type,stock_name, " \
+    sql = "insert into stockholder(company_id,stock_type,stock_name, " \
           "certificate_type,certificate_info,subscribe_capital,subs_capi_date,subs_capi_way,real_capital," \
           "real_capi_date,real_capi_way,stock_percent,created_time,update_time) values(" \
           "%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
