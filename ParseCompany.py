@@ -105,7 +105,7 @@ def parse_company(json_data):
         if new_company_id is None:
             conn.rollback()
             with open('error.txt', 'a') as ferr:
-                ferr.write(json_data)
+                ferr.write(json_data+'\n\r')
             return None
         # 股东结构
         partners = company_data['Partners']
@@ -116,22 +116,20 @@ def parse_company(json_data):
                 conn.rollback()
                 conn.close()
                 with open('error.txt', 'a') as ferr:
-                    ferr.write(json_data)
+                    ferr.write(json_data+'\n\r')
                 return None
         cursor.close()
         conn.commit()
         conn.close()
         print 'success!'
         with open('success.txt', 'a') as fsu:
-            fsu.write(json_data)
+            fsu.write(json_data+'\n\r')
         return True
 
     except Exception, e:
         with open('error.txt', 'a') as ferr:
-            ferr.write(json_data)
+            ferr.write(json_data+'\n\r')
         print 'parse error: '.decode('utf-8'), str(e)
-
-
 
 
 
